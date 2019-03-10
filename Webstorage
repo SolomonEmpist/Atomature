@@ -1,0 +1,46 @@
+<!doctype>
+<html>
+<head>
+	   <title>Webstorage2</title>
+	   <script>
+		 //save
+			   function SaveStorage(frm){
+				var storage=window.sessionStorage;
+				storage.setItem("uname",frm.uname.value);
+				storage.setItem("age",frm.age.value);
+				storage.setItem("email",frm.email.value);
+			   }
+		  //ergodic
+		  function show(){
+		 var storage=window.sessionStorage; 
+		  var result="";
+		  for(var i=0;i<storage.length;i++){
+		  var key=storage.key(i);
+		  var value=storage.getItem(key);
+		  result+=key+":"+value+";";
+		  
+		  }
+		  //show this in div
+		  	  document.getElementById("fdata").innerHTML=result;
+		  }
+
+	   </script>
+</head>
+<body>
+	  <div id="box">
+	  <div id="login">Input your personal-message
+	  	   <form id="form1" name="form1" method="post">
+		   Name<input type="text" name="uname" id="uname" class="inp">
+		   Age<input type="text" name="age" id="age" class="inp">
+	  	   Email<input type="text" name="email" id="email" class="inp">
+		   <hr>
+		   <input type="button" value="submit" onclick="SaveStorage(this.form)">
+		   <input type="button" value="show" onclick="show()">
+	  </div>
+	  </div>
+	  <hr>
+	  <hr>
+	  <div id="fdata"></div>
+
+</body>
+</html>
